@@ -1,0 +1,11 @@
+.switcher {
+  margin: 10px;
+  transition: all .5s;
+}
+
+.hide {
+  display: none;
+  height: 0;
+  overflow: hidden;
+  width: 0;
+}

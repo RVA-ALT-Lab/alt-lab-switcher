@@ -1,6 +1,8 @@
 .switcher {
   margin: 10px;
   transition: all .5s;
+  border: 1px solid #424242;
+  padding: 10px 15px;
 }
 
 .hide {

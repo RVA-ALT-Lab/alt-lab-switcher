@@ -11,7 +11,7 @@
                 'format': 'html'
             });
            
-            var open_column = '[switcher][main]' + selected_text + '[/main][alt][/alt][/switcher]';
+            var open_column = '[switcher]<br>[main]' + selected_text + '[/main]<br>[alt][/alt]<br>[/switcher]';
             var close_column = '';
             var return_text = '';
             return_text = open_column + close_column;

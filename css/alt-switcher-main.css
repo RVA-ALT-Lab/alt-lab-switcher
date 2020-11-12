@@ -3,10 +3,14 @@
   transition: all .5s;
   border: 1px solid #424242;
   padding: 10px 15px;
+  min-height: 60px;
+  display: block;
+  overflow: auto;
 }
 
 .switcher .btn {
 	float:right;
+	margin: 0 0 0 15px;
 }
 
 .hide {

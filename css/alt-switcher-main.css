@@ -5,6 +5,10 @@
   padding: 10px 15px;
 }
 
+.switcher .btn {
+	float:right;
+}
+
 .hide {
   display: none;
   height: 0;

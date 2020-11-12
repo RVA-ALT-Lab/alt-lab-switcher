@@ -50,17 +50,39 @@ function alt_switcher_alt_shortcode( $atts = array(), $content = null ) {
 }
 add_shortcode( 'alt', 'alt_switcher_alt_shortcode' );
 
-// <div class="switcher">
-//   <button class="switch-button">switch languages</button>
-//   <div class="main">
-//     Here is English or whatever
-//   </div>
-//   <div class="alt hide">
-//     Aqui es Español
-//   </div>
-// </div>
-
-
+//***************************************add button to editor 
+add_action( 'after_setup_theme', 'switchbutton_theme_setup' );
+if ( ! function_exists( 'switchbutton_theme_setup' ) ) {
+  function switchbutton_theme_setup(){
+    /********* TinyMCE Buttons ***********/
+    add_action( 'init', 'switchbutton_buttons' );
+  }
+}
+/********* TinyMCE Buttons ***********/
+if ( ! function_exists( 'switchbutton_buttons' ) ) {
+  function switchbutton_buttons() {
+    if ( ! current_user_can( 'edit_posts' ) && ! current_user_can( 'edit_pages' ) ) {
+          return;
+      }
+      if ( get_user_option( 'rich_editing' ) !== 'true' ) {
+          return;
+      }
+      add_filter( 'mce_external_plugins', 'switchbutton_add_buttons' );
+      add_filter( 'mce_buttons', 'switchbutton_register_buttons' );
+  }
+}
+if ( ! function_exists( 'switchbutton_add_buttons' ) ) {
+  function switchbutton_add_buttons( $plugin_array ) {
+      $plugin_array['swpbtn'] = plugin_dir_url(__FILE__).'js/switchbutton-main.js';
+      return $plugin_array;
+  }
+}
+if ( ! function_exists( 'switchbutton_register_buttons' ) ) {
+  function switchbutton_register_buttons( $buttons ) {
+      array_push( $buttons, 'swpbtn' );
+      return $buttons;
+  }
+}
 
 //LOGGER -- like frogger but more useful
 
